@@ -1,0 +1,21 @@
+ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+
+# shortened
+ansible all -m ping
+
+# # list hosts
+ansible all --list-hosts
+
+## display hosts info
+ansible all -m gather_facts
+
+## display info limted
+ansible all -m gather_facts --limit 192.168.1.7
+
+## update apt and use SUDO privilges
+ansible all -m apt -a update_cache=true --become --ask-become-pass
+
+## install package
+ansible all -m apt -a "name=vim-nox state=latest" --become --ask-become-pass
+
+## apt search
